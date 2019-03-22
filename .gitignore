@@ -1,0 +1,8 @@
+00-*.md
+10-Notes/10-Commands.md
+10-Samples
+bin
+obj
+logs
+z-publish
+out

@@ -1,0 +1,50 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug - Console",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceFolder}/t4my/bin/Debug/netcoreapp2.2/t4my.dll",
+			"args": ["g"],
+			"cwd": "${workspaceFolder}/t4my/bin/Debug/netcoreapp2.2",
+			"console": "internalConsole",
+			"stopAtEntry": false,
+			"internalConsoleOptions": "openOnSessionStart",
+			"env": {
+				"APP_ENVIRONMENT": "Development"
+			},
+		},
+		{
+			"name": "Release - Console",
+			"type": "coreclr",
+			"request": "launch",
+			"program": "${workspaceFolder}/t4my/bin/Release/netcoreapp2.2/t4my.dll",
+			"args": [
+				"g"
+			],
+			"cwd": "${workspaceFolder}/t4my/bin/Release/netcoreapp2.2",
+			"console": "internalConsole",
+			"stopAtEntry": false,
+			"internalConsoleOptions": "openOnSessionStart",
+			"logging": {
+				"browserStdOut": false,
+				"engineLogging": false,
+				"moduleLoad": false,
+				"programOutput": true,
+				"exceptions": true,
+			},
+			"env": {},
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		}
+	]
+}

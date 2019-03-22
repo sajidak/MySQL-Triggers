@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- From sample and modified -->
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xsi:schemaLocation="NLog NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      autoReload="true"
+      throwExceptions="true"
+      throwConfigExceptions="true"
+      internalLogFile="logs/nlog-10-internal-${shortdate}.log"
+      internalLogToConsole="true"
+      internalLogLevel="Warn">
+
+    <variable value="t4mysql"
+              name="appName" />
+    <variable value="logs"
+              name="logLocation" />
+    <variable value="2019-03-18 01:24:11"
+              name="copyTestTag" />
+
+    <!-- the targets to write to -->
+    <targets>
+
+        <!-- write logs to File -->
+        <target xsi:type="File"
+                name="nlog-text-file"
+                fileName="${var:logLocation}/t4my-log-${shortdate}.txt"
+                layout="${longdate} | ${uppercase:${level}} | ${logger} | ${message} | ${callsite:includeNamespace=true:className=true:fileName=true:includeSourcePath=false:methodName=true} | ${onexception:inner=${exception:format=@,Data:maxInnerExceptionLevel=5} | ${stacktrace:format=Raw}} | ${all-event-properties}"
+                archiveFileName="${var:logLocation}/archive/t4my-log-{##}.txt"
+                archiveNumbering="DateAndSequence"
+                archiveOldFileOnStartup="true"
+                maxArchiveFiles="0" />
+
+        <!-- write logs to Console -->
+        <target xsi:type="Console"
+                name="nlog-console"
+                layout="${uppercase:${level}} | ${logger}|${message} | ${onexception:inner=${exception:format=@,Data:maxInnerExceptionLevel=5} | ${stacktrace:format=Raw}}" />
+
+    </targets>
+
+    <!-- rules to map from logger name to target -->
+    <rules>
+        <logger name="*"
+                minlevel="Debug"
+                writeTo="nlog-text-file,nlog-console">
+        </logger>
+    </rules>
+
+</nlog>

@@ -1,0 +1,5 @@
+{
+	// Required to avoid empty lines in trigger script
+	//    from the final new line in template files.
+	"files.insertFinalNewline": false
+}

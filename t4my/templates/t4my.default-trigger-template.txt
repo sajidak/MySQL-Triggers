@@ -1,0 +1,44 @@
+/*
+    Triggers for Table ${TABLE}
+*/
+-- NOTE: INSERT trigger not required, data will exist in table.
+-- Cleanup existing triggers, if any
+DROP TRIGGER IF EXISTS TR_${TABLE}_U;
+DROP TRIGGER IF EXISTS TR_${TABLE}_D;
+delimiter ##
+-- Create UPDATE trigger
+create trigger TR_${TABLE}_U
+	before update
+	on ${TABLE}
+	for each row
+	begin
+        set @updateundle = JSON_OBJECT(
+			  "Table", "${TABLE}"
+            , "Action", "UPDATE"
+            , "ConnectionID", connection_id()
+            , "Time", current_timestamp()
+            , "OLD", JSON_OBJECT(
+                    ${COLUMN_LIST_OLD}                    )
+            , "NEW", JSON_OBJECT(
+                    ${COLUMN_LIST_NEW}                    )
+        );
+		INSERT INTO AUDIT_TRAIL (TABLENAME, ACTION, PAYLOAD_JSON) VALUES ('${TABLE}', 'UPDATE', @updateundle);
+    end##
+-- Create DELETE trigger
+create trigger TR_${TABLE}_D
+	before delete
+	on ${TABLE}
+	for each row
+	begin
+        set @updateundle = JSON_OBJECT(
+			  "Table", "${TABLE}"
+            , "Action", "DELETE"
+            , "ConnectionID", connection_id()
+            , "Time", current_timestamp()
+            , "OLD", JSON_OBJECT(
+                    ${COLUMN_LIST_OLD}                    )
+            , "NEW", "{}"
+        );
+		INSERT INTO AUDIT_TRAIL (TABLENAME, ACTION, PAYLOAD_JSON) VALUES ('${TABLE}', 'DELETE', @updateundle);
+    end##
+delimiter ;

@@ -1,0 +1,16 @@
+{
+	"Schema": "T4MY_SAMPLE",
+	"ConnectionString": "server=127.0.0.1;port=3306;user=t4my-user-ro;password=acbd83c3e7e0;database=T4MY_SAMPLE",
+	"ConfigurationFile": "configs/t4my.default-config.json",
+	"AuditTableTemplateFile": "templates/t4my.default-audittable-template.txt",
+	"TriggerTemplateFile": "templates/t4my.default-trigger-template.txt",
+	"OutputFile": "t4MySql-trigger-script.sql",
+	"PlaceHolderValues": {
+		"OLD_COLUMNS_PLACEHOLDER": "${COLUMN_LIST_OLD}",
+		"NEW_COLUMNS_PLACEHOLDER": "${COLUMN_LIST_NEW}",
+		"TABLE_NAME_PLACEHOLDER": "${TABLE}",
+		"AUDIT_TABLE_NAME_PLACEHOLDER": "${AUDIT_TABLE}"
+	},
+	"TableList": [
+	]
+}
