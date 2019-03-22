@@ -21,13 +21,13 @@
 - Navigate to folder where you want the source tree
   - `cd <Source-Tree-Parent>`
 - Get the source tree from git
-  - `git clone <todo:put-git-url>`
+  - `git clone https://bitbucket.org/firament/mysql-triggers-lite.git`
 
 ## Build binaries
 - Navigate to project root
-`cd <todo:put-project-folder-name>`
+`cd MySQL-Triggers-Lite`
 - Compile and Build the binaries
-`dotnet build -c Release -o <Output-Folder> 40-Develop/t4my/t4my.csproj`
+`dotnet build -c Release -o <Output-Folder> t4my/t4my.csproj`
 
 ## Run
 - Navigate to output folder
