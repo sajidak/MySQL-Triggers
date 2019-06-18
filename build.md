@@ -35,3 +35,4 @@
 
 - For runtime options, see [Syntax and Usage](Usage.md#usage)
 
+This should not be auto checked.
