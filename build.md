@@ -21,7 +21,7 @@
 - Navigate to folder where you want the source tree
   - `cd <Source-Tree-Parent>`
 - Get the source tree from git
-  - `git clone https://bitbucket.org/firament/mysql-triggers-lite.git`
+  - `git clone <todo:put-git-url-here>`
 
 ## Build binaries
 - Navigate to project root
