@@ -21,11 +21,7 @@
 - Navigate to folder where you want the source tree
   - `cd <Source-Tree-Parent>`
 - Get the source tree from git
-<<<<<<< HEAD
   - `git clone <todo:put-git-url-here>`
-=======
-  - `git clone https://github.com/sajidak/MySQL-Triggers.git`
->>>>>>> 093f04b6c7f363c383393111b542867bf74f505b
 
 ## Build binaries
 - Navigate to project root
